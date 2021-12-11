@@ -1,0 +1,158 @@
+@use "sass:map";
+
+// Styles used across all themes, uses theme variables
+&.app {
+  width: 100vw;
+  max-width: 100%;
+  min-height: calc(100vh - 70px);
+  background: map.get($colors, background);
+  color: map.get($colors, text);
+  font-family: sans-serif, monospace;
+  padding-top: 70px;
+  padding-bottom: 20px;
+
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+    outline: none;
+  }
+
+  @each $colorname, $color in $colors {
+    .border--#{$colorname} {
+      border: 1px solid;
+      border-color: $color;
+    }
+  }
+
+  .container {
+    width: 1000px;
+    max-width: calc(100% - 40px);
+    margin: 0 auto;
+  }
+
+  .spacer {
+    flex-grow: 1 !important;
+  }
+
+  .btn {
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 5px 10px;
+    display: inline-block;
+    font-weight: bold;
+
+    &-outlined {
+      border: 2px solid;
+      border-color: map.get($colors, primary);
+    }
+
+    &:hover {
+      background-color: map.get($colors, primary);
+    }
+
+    &-block {
+      display: block;
+    }
+  }
+
+  input {
+    background: map.get($colors, background);
+    color: map.get($colors, text);
+    border: 0;
+    max-width: 100% !important;
+  }
+
+  .paper {
+    box-shadow: 0px 0px 100px -36px #7676768c;
+    padding: 15px;
+    border-radius: 20px;
+  }
+
+  #nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100vw;
+    height: 70px;
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    background-color: rgba(map.get($colors, background), 0.7);
+    font-size: 1rem;
+
+    .container {
+      display: flex;
+      align-items: center;
+      height: 70px;
+      z-index: 3;
+    }
+
+    a {
+      padding: 3px 5px;
+      text-decoration: none;
+      color: map.get($colors, text);
+    }
+
+    a:hover {
+      color: map.get($colors, primary);
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+  }
+
+  // text
+
+  ul,
+  ol {
+    padding: 0 1rem;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    line-height: 1.1;
+  }
+
+  code {
+    background-color: rgba(map.get($colors, background-light), 1);
+    color: map.get($colors, text);
+  }
+
+  pre {
+    background: map.get($colors, background-light);
+    color: map.get($colors, text);
+    font-family: "JetBrainsMono", monospace;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+
+    code {
+      color: inherit;
+      padding: 0;
+      background: none;
+      font-size: 0.8rem;
+    }
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  blockquote {
+    padding-left: 1rem;
+    border-left: 2px solid rgba(map.get($colors, primary), 0.3);
+  }
+
+  hr {
+    border: none;
+    border-top: 2px solid rgba(map.get($colors, primary), 0.3);
+    margin: 2rem 0;
+  }
+}
